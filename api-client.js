@@ -1,4 +1,5 @@
-var myHeaders = new Headers();
+const myHeaders = new Headers();
+const jsonboxLocal = "http://localhost:3000/box_d69abf0f1a479a48bb57";
 myHeaders.append("Content-Type", "application/json");
 myHeaders.append(
   "Cookie",
@@ -12,10 +13,7 @@ async function deleteToDo(id) {
     redirect: "follow",
   };
   try {
-    const deleteTask = await fetch(
-      `https://jsonbox.io/box_699e80f98a488f1b95c2/${id}`,
-      requestOptions
-    );
+    await fetch(`${jsonboxLocal}/${id}`, requestOptions);
   } catch (error) {
     console.log("error", error);
   }
@@ -28,10 +26,7 @@ async function getToDo() {
     redirect: "follow",
   };
   try {
-    const getData = await fetch(
-      "https://jsonbox.io/box_699e80f98a488f1b95c2",
-      requestOptions
-    );
+    const getData = await fetch(jsonboxLocal, requestOptions);
     const jsonData1 = await getData.json();
     return jsonData1;
   } catch (error) {
@@ -48,10 +43,7 @@ async function postToDo(input) {
     redirect: "follow",
   };
   try {
-    const postData = await fetch(
-      "https://jsonbox.io/box_699e80f98a488f1b95c2",
-      requestOptions
-    );
+    await fetch(jsonboxLocal, requestOptions);
   } catch (error) {
     console.log("error", error);
   }
@@ -66,10 +58,7 @@ async function updateTodo(description, done, id) {
     redirect: "follow",
   };
   try {
-    const updateData = await fetch(
-      `https://jsonbox.io/box_699e80f98a488f1b95c2/${id}`,
-      requestOptions
-    );
+    await fetch(`${jsonboxLocal}/${id}`, requestOptions);
   } catch (error) {
     console.log("error", error);
   }
